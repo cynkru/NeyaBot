@@ -1,8 +1,15 @@
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).with_name(".env"))
+
 from stoat import Client, Message
 import stoat
 from ai import ask_ai
 import asyncio
 from stoat.ext.commands import Context
+import os
 
 statuses = [
     "Я не бот",
@@ -65,5 +72,5 @@ class MyClient(Client):
                 await msg.edit(content=ans)
             
 
-client = MyClient(token='', http_base='https://api.cynk.space', websocket_base='wss://ws.cynk.space')
+client = MyClient(token=os.getenv("TOKEN", ""), http_base='https://api.cynk.space', websocket_base='wss://ws.cynk.space')
 client.run()

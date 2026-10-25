@@ -5,7 +5,7 @@ from openai import AsyncOpenAI
 
 # Клиент создаётся один раз на уровне модуля (важно для переиспользования пула соединений)
 client = AsyncOpenAI(
-    api_key=os.getenv("AI", ""),
+    api_key=os.getenv("OPENAI_API_KEY", ""),
     base_url=os.getenv("AI_BASE_URL", ""),
     timeout=60.0,
     max_retries=2,
